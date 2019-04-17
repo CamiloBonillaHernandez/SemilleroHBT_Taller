@@ -1,0 +1,119 @@
+<div>
+  <section>
+      <h2>{{ title }}</h2>
+  </section>
+
+  <br>
+
+  <section>
+      <input value="Guardar" type="button" (click)="guardar()" />
+      <input value="Editar" type="button" (click)="editar()" />
+      <input value="Gestionar" type="button" (click)="gestionar()" />
+  </section>
+  <br>
+  <section>
+      <div *ngIf="gestionarBebida">
+          <h2>Gestionar Bebidas</h2>
+          <br>
+          <br>
+
+          <TABLE  WIDTH="50%">
+                  <TR>
+                      <TD>Nombre Bebida</TD>
+                      <TD ROWSPAN=3></TD>
+                      <TD>Precio</TD>
+                      
+                  </TR>
+                  <TR>
+                      <TD>
+                        <input name="name" type="text"  placeholder="nombre" />
+
+                      </TD> 
+                      <TD>
+                          <input name="name" type="text"  placeholder="precio" />
+                      </TD>
+                  </TR>
+                  <tr>
+                      <td>
+
+                      </td>
+                      <td>
+                       <input value="Consultar" type="button" (click)="consultarBebida()"/>
+                      </td>
+                  </tr>
+          </TABLE>
+          <br>
+          <br>
+          <table BORDER CELLPADDING=10 CELLSPACING=0 >
+              <tr>
+                <th>Nombres</th>
+                <th>Precio</th>
+                <th>Options</th>
+              </tr>
+              <tr *ngFor="let beb of bebidas">  
+                <th>{{beb.nombre}}</th>
+                <th>{{beb.precio}}</th>
+                <th>Options</th>
+              </tr> 
+            </table>
+
+            <p>BEBIDAS</p>
+            <pre>{{ bebidas| json }}</pre>
+
+      </div>
+      <div *ngIf="guardarBebida">
+          <h2>Guardar Persona</h2>
+          <TABLE   WIDTH="50%">
+                  <TR>
+                      <TD>Nombre Bebida
+                          <br>
+                          <input name="name" type="text" [(ngModel)]="bebida.nombreBabida"  placeholder="Nonbre" />
+
+                      </TD>
+                      <TD>Precio Bebida
+                          <br>
+                          <input name="name" type="text" [(ngModel)]="bebida.precioBebida"  placeholder="Precio" />
+                      </TD>
+                  </TR>
+                 
+                  <TR>
+                      <TD></TD>
+                      <TD>
+                              <input value="Guardar" type="button" (click)="guardar()"/>
+                      </TD>
+                     
+                  </TR>
+              </TABLE>
+
+      </div>
+      <div *ngIf="editarBebida">
+          <h2>Editar Persona</h2>
+          <TABLE   WIDTH="50%">
+                  <TR>
+                      <TD>Bebidas
+                          <br>
+                          <select [(ngModel)]="persona.tipoIdentificacion">
+                                  <option value="CC">bebidas</option>
+                          </select>
+
+                      </TD>
+                      <TD>Precio Bebida
+                          <br>
+                          <input name="name" type="text" [(ngModel)]="persona.numeroIdentificacion"  placeholder="precio" />
+                      </TD>
+                  </TR>
+                  <TR>
+                      <TD>
+                      </TD>
+                      <TD>
+                              <input value="Editar" type="button" (click)="editar()"/>
+                      </TD>
+                     
+                  </TR>
+              </TABLE>
+      </div>
+
+
+  </section>
+
+</div>
